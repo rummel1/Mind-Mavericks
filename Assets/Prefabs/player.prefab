@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1541673484781653913}
   - component: {fileID: 1541673484781653905}
   - component: {fileID: 1541673484781653911}
-  - component: {fileID: 119562721009176744}
   - component: {fileID: 1541673484781653904}
   - component: {fileID: 1857506924008726736}
   - component: {fileID: 4616134131431446877}
@@ -145,21 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa493e59e1f12d4e8e474abba6cd656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &119562721009176744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541673484781653912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 701798f20d6935044a4553255036de98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hiz: 10
-  ziplamaGucu: 5
-  ikinciZiplamaGucu: 5
 --- !u!114 &1541673484781653904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7a5606795abc642bf1815a18a06aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smoothTime: 0
   gravityMultiplier: 3
   speed: 6
   jumpPower: 4
