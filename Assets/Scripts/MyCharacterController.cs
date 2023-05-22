@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class MyCharacterController : MonoBehaviour
 {
+    private static MyCharacterController instance;
 
     private Vector2 _input;
     private CharacterController _characterController;
@@ -30,6 +31,7 @@ public class MyCharacterController : MonoBehaviour
     private void Awake()
     {
        _characterController= GetComponent<CharacterController>();
+       instance = this;
     }
 
     private void Update()
@@ -87,6 +89,11 @@ public class MyCharacterController : MonoBehaviour
         yield return new WaitUntil(() => !IsGrounded());
         yield return new WaitUntil(IsGrounded);
         _numberOfJumps = 0;
+    }
+    public static void SetCharacterPosition(Vector3 position)
+    {
+        // Karakteri belirtilen pozisyona yerleştirme
+        instance.transform.position = position;
     }
 
     private bool IsGrounded() => _characterController.isGrounded;

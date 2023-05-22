@@ -13,7 +13,7 @@ public class fireScript : MonoBehaviour
     public float fireDelay = 0.2f;
     public float bulletSpeed = 20f;
     private float fireCountdown1 = 0f;
-    private float fireCountdown2 = 0f;
+    //private float fireCountdown2 = 0f;
     private bool firedFrom1 = true;
     public bool canShoot = false;
     
