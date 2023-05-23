@@ -1,96 +1,78 @@
 using UnityEngine;
-
-[System.Serializable]
-public class CharacterData
-{
-    public GameObject characterPrefab;
-    public Vector3 savedPosition;
-    // Diğer karakter özelliklerini buraya ekleyebilirsiniz
-}
-
 public class CharacterSwitcher : MonoBehaviour
 {
-    public CharacterData[] characters;
-    public CharacterController myCharacterController; // CharacterController scriptine referans
-
+    public GameObject[] characters;
     private int activeCharacterIndex = 0;
+    Newposition newPositionScript;
+    public GameObject Character1;
+    public GameObject Character2;
 
     private void Start()
     {
+        // Tüm karakterleri devre dışı bırak
+        DeactivateAllCharacters();
+
         // İlk karakteri etkinleştir
         ActivateCharacter(activeCharacterIndex);
+        newPositionScript = FindObjectOfType<Newposition>();
     }
 
     private void Update()
     {
         // Karakter değiştirme kontrolleri
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SwitchToPreviousCharacter();
+            Character1.transform.position = newPositionScript.changepoint.position;
+            SwitchToCharacter(0);
+            
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SwitchToNextCharacter();
+            Character2.transform.position = newPositionScript.changepoint.position;
+            SwitchToCharacter(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SwitchToCharacter(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SwitchToCharacter(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SwitchToCharacter(4);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SwitchToCharacter(5);
         }
     }
 
-    private void SwitchToPreviousCharacter()
+    private void SwitchToCharacter(int index)
     {
-        // Etkin karakterin pozisyonunu kaydet
-        SaveCharacterPosition(activeCharacterIndex);
+        // Etkin karakteri devre dışı bırak
+        characters[activeCharacterIndex].SetActive(false);
 
-        // Etkin karakterin indeksini azalt
-        activeCharacterIndex--;
-        if (activeCharacterIndex < 0)
-        {
-            activeCharacterIndex = characters.Length - 1;
-        }
+        // Yeni karakteri etkinleştir
+        ActivateCharacter(index);
 
-        // Etkin karakteri değiştir
-        ActivateCharacter(activeCharacterIndex);
-    }
-
-    private void SwitchToNextCharacter()
-    {
-        // Etkin karakterin pozisyonunu kaydet
-        SaveCharacterPosition(activeCharacterIndex);
-
-        // Etkin karakterin indeksini artır
-        activeCharacterIndex++;
-        if (activeCharacterIndex >= characters.Length)
-        {
-            activeCharacterIndex = 0;
-        }
-
-        // Etkin karakteri değiştir
-        ActivateCharacter(activeCharacterIndex);
+        // Yeni karakteri etkin karakter olarak ayarla
+        activeCharacterIndex = index;
     }
 
     private void ActivateCharacter(int index)
     {
-        // Etkin karakterin pozisyonunu kaydetme
-        SaveCharacterPosition(activeCharacterIndex);
+        // Seçilen karakteri etkinleştir
+        characters[index].SetActive(true);
+    }
 
+    private void DeactivateAllCharacters()
+    {
         // Tüm karakterleri devre dışı bırak
         for (int i = 0; i < characters.Length; i++)
         {
-            characters[i].characterPrefab.SetActive(false);
+            characters[i].SetActive(false);
         }
-
-        // Seçilen karakteri etkinleştir
-        characters[index].characterPrefab.SetActive(true);
-
-        // Kaydedilen pozisyona yerleş
-        characters[index].characterPrefab.transform.position = characters[index].savedPosition;
-
-        // Karakteri CharacterController scriptine bildirme
-        MyCharacterController.SetCharacterPosition(characters[index].savedPosition);
-    }
-
-
-    private void SaveCharacterPosition(int index)
-    {
-        // Etkin karakterin pozisyonunu kaydet
-        characters[index].savedPosition = characters[index].characterPrefab.transform.position;
     }
 }
