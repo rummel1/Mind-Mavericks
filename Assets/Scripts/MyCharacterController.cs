@@ -17,7 +17,7 @@ public class MyCharacterController : MonoBehaviour
     private float _currentVelocity;
 
     private float _gravity = -9.81f;
-    [SerializeField] private float gravityMultiplier = 3.0f;
+    //[SerializeField] private float gravityMultiplier = 3.0f;
     private float _velocity;
     
     [SerializeField] private float speed;
@@ -25,6 +25,11 @@ public class MyCharacterController : MonoBehaviour
     [SerializeField] private float jumpPower;
     private int _numberOfJumps;
     [SerializeField] private int maxNumberOfJumps = 2;
+    
+    
+    public static float originalGravityMultiplier = 1.0f;
+    public static float temporaryGravityMultiplier = 100.0f;
+    public static bool isGravityIncreased = false;
 
     
     
@@ -39,21 +44,36 @@ public class MyCharacterController : MonoBehaviour
         ApplyRotation();
         ApplyMovement();
         ApplyGravity();
+        
     }
 
     private void ApplyGravity()
     {
-        if (IsGrounded() && _velocity<0.0f)
+        if (IsGrounded() && _velocity < 0.0f)
         {
             _velocity = -1.0f;
-            
         }
         else
         {
+            float gravityMultiplier = originalGravityMultiplier;
+
+            if (isGravityIncreased)
+            {
+                gravityMultiplier = temporaryGravityMultiplier;
+            }
+
             _velocity += _gravity * gravityMultiplier * Time.deltaTime;
         }
-        
+
         _direction.y = _velocity;
+    }
+    public static IEnumerator IncreaseGravityForDuration(float duration)
+    {
+        isGravityIncreased = true;
+
+        yield return new WaitForSeconds(duration);
+
+        isGravityIncreased = false;
     }
     private void ApplyRotation()
     {
@@ -89,11 +109,6 @@ public class MyCharacterController : MonoBehaviour
         yield return new WaitUntil(() => !IsGrounded());
         yield return new WaitUntil(IsGrounded);
         _numberOfJumps = 0;
-    }
-    public static void SetCharacterPosition(Vector3 position)
-    {
-        // Karakteri belirtilen pozisyona yerleştirme
-        instance.transform.position = position;
     }
 
     private bool IsGrounded() => _characterController.isGrounded;

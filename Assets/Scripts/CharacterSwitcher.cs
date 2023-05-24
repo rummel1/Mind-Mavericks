@@ -6,6 +6,10 @@ public class CharacterSwitcher : MonoBehaviour
     Newposition newPositionScript;
     public GameObject Character1;
     public GameObject Character2;
+    public GameObject Character3;
+    public GameObject Character4;
+    
+    
 
     private void Start()
     {
@@ -33,10 +37,12 @@ public class CharacterSwitcher : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            Character3.transform.position = newPositionScript.changepoint.position;
             SwitchToCharacter(2);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            Character4.transform.position = newPositionScript.changepoint.position;
             SwitchToCharacter(3);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -59,6 +65,7 @@ public class CharacterSwitcher : MonoBehaviour
 
         // Yeni karakteri etkin karakter olarak ayarla
         activeCharacterIndex = index;
+        StartCoroutine(MyCharacterController.IncreaseGravityForDuration(0.3f));
     }
 
     private void ActivateCharacter(int index)

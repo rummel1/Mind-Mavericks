@@ -7,6 +7,8 @@ public class Newposition : MonoBehaviour
     public  Transform changepoint;
     public GameObject Character1;
     public GameObject Character2;
+    public GameObject Character3;
+    public GameObject Character4;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,14 @@ public class Newposition : MonoBehaviour
         else if (Character2.activeSelf)
         {
             changepoint.position = Character2.transform.position;
+        }
+        else if (Character3.activeSelf)
+        {
+            changepoint.position = Character3.transform.position;
+        }
+        else if (Character4.activeSelf)
+        {
+            changepoint.position = Character4.transform.position;
         }
     }
 }

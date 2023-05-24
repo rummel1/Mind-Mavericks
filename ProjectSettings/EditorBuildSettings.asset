@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nicola tesla.unity
     guid: 3049075d0c418a942b8b539570e37a62
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 639c425c65563b745b978e7d2c7b2dc0,
+      type: 2}
