@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5084227818531113452}
   - component: {fileID: 8151820810436986441}
   - component: {fileID: 6252652833769468547}
+  - component: {fileID: 5940887852435664464}
   m_Layer: 0
   m_Name: BlackBook
   m_TagString: Untagged
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5940887852435664464
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603919326970418006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8671397862077104796, guid: 18abfb1b7bc5ed948807dca48e084cb0, type: 3}

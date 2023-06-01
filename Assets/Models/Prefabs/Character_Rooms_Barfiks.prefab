@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1498448406822703813}
   - component: {fileID: 2550257255583178080}
   - component: {fileID: 324437567438399914}
+  - component: {fileID: 6297178683399991769}
   m_Layer: 0
   m_Name: Character_Rooms_Barfiks
   m_TagString: Untagged
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6297178683399991769
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269917908012009599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3537709356157935800, guid: f93812ea4a0793740a7cc2b26036d7aa, type: 3}
