@@ -9,6 +9,7 @@ public class MyCharacterController : MonoBehaviour
 {
     private static MyCharacterController instance;
 
+    private Animator animator;
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
@@ -30,6 +31,8 @@ public class MyCharacterController : MonoBehaviour
     public static float originalGravityMultiplier = 1.0f;
     public static float temporaryGravityMultiplier = 100.0f;
     public static bool isGravityIncreased = false;
+    
+    private Vector3 previousPosition;
 
     
     
@@ -37,13 +40,32 @@ public class MyCharacterController : MonoBehaviour
     {
        _characterController= GetComponent<CharacterController>();
        instance = this;
+       animator = GetComponent<Animator>();
+       previousPosition = transform.position;
     }
 
-    private void Update()
+     void FixedUpdate()
     {
         ApplyRotation();
         ApplyMovement();
         ApplyGravity();
+        
+        Vector3 currentPosition = transform.position;
+        Vector3 displacement = currentPosition - previousPosition;
+
+        if (displacement.magnitude > 0)
+        {
+            // Karakter hareket ediyor
+            animator.SetFloat("Speed", 0.9f);
+        }
+        else
+        {
+            // Karakter hareket etmiyor
+            animator.SetFloat("Speed", 0f);
+        }
+
+        previousPosition = currentPosition;
+        
         
     }
 
