@@ -79,7 +79,7 @@ public class MyCharacterController : MonoBehaviour
     {
         if(_input.sqrMagnitude==0)return;
         var targetAngle = Mathf.Atan2(_direction.x,_direction.z)*Mathf.Rad2Deg;
-        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle*-1, ref _currentVelocity, smoothTime);
+        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
         transform.rotation= Quaternion.Euler(0.0f,angle,0.0f);
     }
 
