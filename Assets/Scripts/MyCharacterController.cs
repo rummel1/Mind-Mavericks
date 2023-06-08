@@ -21,7 +21,7 @@ public class MyCharacterController : MonoBehaviour
     //[SerializeField] private float gravityMultiplier = 3.0f;
     private float _velocity;
     
-    [SerializeField] private float speed;
+     public static float speed=6;
 
     [SerializeField] private float jumpPower;
     private int _numberOfJumps;
@@ -105,7 +105,7 @@ public class MyCharacterController : MonoBehaviour
         transform.rotation= Quaternion.Euler(0.0f,angle,0.0f);
     }
 
-    private void ApplyMovement()
+    public void ApplyMovement()
     {
         _characterController.Move(_direction * (speed * Time.deltaTime));
     }

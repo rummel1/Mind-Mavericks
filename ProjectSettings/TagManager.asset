@@ -7,6 +7,12 @@ TagManager:
   - Enemy
   - CheckPoint
   - Camera
+  - Kelvin
+  - Ground
+  - Obje
+  - Player1
+  - Ice
+  - Electronic
   layers:
   - Default
   - TransparentFX

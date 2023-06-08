@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCheckPoint : MonoBehaviour
+public class CuireCheckPoint: MonoBehaviour
 {
     public CharacterController characterController;
     public Transform chracter;
-    
     private Vector3 spawnPoint;
   
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-       
+        
     }
     void Update()
     {
@@ -43,14 +42,7 @@ public class PlayerCheckPoint : MonoBehaviour
             
 
         }
-        else if (other.gameObject.CompareTag("Poison"))
-        {
-            spawn();
-            
-            
-            
-
-        }
+        
         
     }
     private void spawn()
