@@ -13,6 +13,7 @@ TagManager:
   - Player1
   - Ice
   - Electronic
+  - Tesla
   layers:
   - Default
   - TransparentFX

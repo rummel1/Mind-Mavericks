@@ -225,6 +225,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tesla_idle
       objectReference: {fileID: 0}
+    - target: {fileID: 4628360568651494569, guid: b5558c660e60a894f87ba6d01b31b1fc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tesla
+      objectReference: {fileID: 0}
     - target: {fileID: 5436106188525006355, guid: b5558c660e60a894f87ba6d01b31b1fc,
         type: 3}
       propertyPath: m_RootOrder
