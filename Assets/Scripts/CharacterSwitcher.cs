@@ -8,6 +8,8 @@ public class CharacterSwitcher : MonoBehaviour
     public GameObject Character2;
     public GameObject Character3;
     public GameObject Character4;
+    public GameObject Character5;
+    public GameObject Character6;
     
     
 
@@ -47,10 +49,12 @@ public class CharacterSwitcher : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
+            Character5.transform.position = newPositionScript.changepoint.position;
             SwitchToCharacter(4);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
+            Character6.transform.position = newPositionScript.changepoint.position;
             SwitchToCharacter(5);
         }
     }

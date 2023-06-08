@@ -25,6 +25,7 @@ public class Slow_Mo : MonoBehaviour
         {
             StartSlowMotion();
             Hareket.hiz = 25f;
+            MyCharacterController.speed = 28;
 
 
         }
@@ -32,6 +33,7 @@ public class Slow_Mo : MonoBehaviour
         {
             StopSlowMotion();
             Hareket.hiz = 8f;
+            MyCharacterController.speed = 6;
         }
 
        

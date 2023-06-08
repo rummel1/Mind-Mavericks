@@ -9,6 +9,7 @@ public class MyCharacterController : MonoBehaviour
 {
     private static MyCharacterController instance;
 
+    private Animator animator;
     private Vector2 _input;
     private CharacterController _characterController;
     private Vector3 _direction;
@@ -20,7 +21,7 @@ public class MyCharacterController : MonoBehaviour
     //[SerializeField] private float gravityMultiplier = 3.0f;
     private float _velocity;
     
-    [SerializeField] private float speed;
+     public static float speed=6;
 
     [SerializeField] private float jumpPower;
     private int _numberOfJumps;
@@ -30,6 +31,8 @@ public class MyCharacterController : MonoBehaviour
     public static float originalGravityMultiplier = 1.0f;
     public static float temporaryGravityMultiplier = 100.0f;
     public static bool isGravityIncreased = false;
+    
+    private Vector3 previousPosition;
 
     
     
@@ -37,13 +40,32 @@ public class MyCharacterController : MonoBehaviour
     {
        _characterController= GetComponent<CharacterController>();
        instance = this;
+       animator = GetComponent<Animator>();
+       previousPosition = transform.position;
     }
 
-    private void Update()
+     void FixedUpdate()
     {
         ApplyRotation();
         ApplyMovement();
         ApplyGravity();
+        
+        Vector3 currentPosition = transform.position;
+        Vector3 displacement = currentPosition - previousPosition;
+
+        if (displacement.magnitude > 0)
+        {
+            // Karakter hareket ediyor
+            animator.SetFloat("Speed", 0.9f);
+        }
+        else
+        {
+            // Karakter hareket etmiyor
+            animator.SetFloat("Speed", 0f);
+        }
+
+        previousPosition = currentPosition;
+        
         
     }
 
@@ -79,11 +101,11 @@ public class MyCharacterController : MonoBehaviour
     {
         if(_input.sqrMagnitude==0)return;
         var targetAngle = Mathf.Atan2(_direction.x,_direction.z)*Mathf.Rad2Deg;
-        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle*-1, ref _currentVelocity, smoothTime);
+        var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
         transform.rotation= Quaternion.Euler(0.0f,angle,0.0f);
     }
 
-    private void ApplyMovement()
+    public void ApplyMovement()
     {
         _characterController.Move(_direction * (speed * Time.deltaTime));
     }
