@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class rotate : MonoBehaviour
+public class fanturn : MonoBehaviour
 {
     public float rotationSpeed = 10f; // Dönme hızı
 
