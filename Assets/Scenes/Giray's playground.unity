@@ -9763,7 +9763,7 @@ PrefabInstance:
     - target: {fileID: 1240661534465772795, guid: bcd4254798006fb4f977dd7cfa931bc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.86
+      value: 23.71
       objectReference: {fileID: 0}
     - target: {fileID: 1240661534465772795, guid: bcd4254798006fb4f977dd7cfa931bc5,
         type: 3}
@@ -9830,8 +9830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4474d88b91c73043942dc6e167501cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {x: 0, y: 0, z: 0}
-  pointB: {x: 0, y: 0, z: 0}
+  pointA: {x: -27.11, y: 20.86, z: 51.26}
+  pointB: {x: -27.11, y: 23.71, z: 51.26}
   speed: 2
 --- !u!65 &524399295
 BoxCollider:
